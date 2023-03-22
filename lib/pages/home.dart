@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:wed_guru/pages/addUser.dart';
 import 'package:wed_guru/pages/api.dart';
+import 'package:wed_guru/pages/pp.dart';
 import 'package:wed_guru/pages/profile.dart';
 import 'package:wed_guru/pages/userHome.dart';
 
@@ -17,7 +18,8 @@ class _HomePageState extends State<HomePage> {
   int _selectedIndex = 0;
   static  final List<Widget>  _widgetOptions = <Widget>[
     UserHome(),
-    UserAdd(),
+    UserList(),
+    //UserAdd(),
     TodoListPage(),
     UserProfile(),
   ];
@@ -27,14 +29,6 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       backgroundColor: Colors.transparent,
       body: Container(
-        // decoration: const BoxDecoration(
-        // image: DecorationImage(
-        // image: AssetImage("lib/img/bg2.jpg"),
-        //   fit: BoxFit.cover,
-        //  opacity: 0.7,
-        //   alignment: Alignment.center,
-        //     ),
-        //  ),
         color: Colors.white,
         child: _widgetOptions.elementAt(_selectedIndex),
       ),

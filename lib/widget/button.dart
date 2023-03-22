@@ -4,6 +4,8 @@ import 'package:wed_guru/pages/home.dart';
 
 
 class ButtonLogin extends StatefulWidget {
+  const ButtonLogin({super.key});
+
   @override
   _ButtonLoginState createState() => _ButtonLoginState();
 }
