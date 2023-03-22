@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 // ignore: depend_on_referenced_packages
 import 'package:google_nav_bar/google_nav_bar.dart';
-import 'package:wed_guru/pages/addUser.dart';
-import 'package:wed_guru/pages/api.dart';
-import 'package:wed_guru/pages/pp.dart';
-import 'package:wed_guru/pages/profile.dart';
-import 'package:wed_guru/pages/userHome.dart';
+import 'package:wed_guru/pages/API/api.dart';
+import 'package:wed_guru/pages/Localdb/userlist.dart';
+import 'package:wed_guru/pages/components/profile.dart';
+import 'package:wed_guru/pages/components/swipeCardpage.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:wed_guru/pages/home.dart';
+import 'package:wed_guru/pages/components/homeNavigation.dart';
 
 class ButtonNewUser extends StatefulWidget {
   @override

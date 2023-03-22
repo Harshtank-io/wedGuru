@@ -1,7 +1,7 @@
-import 'package:wed_guru/database/dbhelper.dart';
+import 'package:wed_guru/database/databasehelper.dart';
 import 'package:flutter/material.dart';
 import 'package:wed_guru/model/pmodel.dart';
-import 'package:wed_guru/pages/pp.dart';
+import 'package:wed_guru/pages/Localdb/userlist.dart';
 
 class EditUser extends StatefulWidget {
   final User user;

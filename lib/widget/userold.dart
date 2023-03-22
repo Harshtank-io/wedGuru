@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:wed_guru/pages/login.dart';
+import 'package:wed_guru/pages/loginComponents/login.dart';
 class UserOld extends StatelessWidget {
   const UserOld({Key? key}) : super(key: key);
 

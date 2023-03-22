@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:wed_guru/database/dbhelper.dart';
+import 'package:wed_guru/database/databasehelper.dart';
 import 'package:wed_guru/model/pmodel.dart';
-import 'package:wed_guru/pages/pp.dart';
+import 'package:wed_guru/pages/Localdb/userlist.dart';
 
 
 class AddUser extends StatefulWidget {
@@ -14,8 +14,6 @@ class AddUser extends StatefulWidget {
 class _AddUserState extends State<AddUser> {
   final TextEditingController _nameController = TextEditingController();
   final TextEditingController _genderController = TextEditingController();
-
-  // final TextEditingController _dobController = TextEditingController();
   final TextEditingController _cityController = TextEditingController();
   final TextEditingController _descriptionController = TextEditingController();
 
@@ -68,15 +66,6 @@ class _AddUserState extends State<AddUser> {
                     border: OutlineInputBorder(),
                   ),
                 ),
-                // const SizedBox(height: 16.0),
-                // // DOB text field
-                // TextFormField(
-                //   controller: _dobController,
-                //   decoration: const InputDecoration(
-                //     labelText: 'DOB',
-                //     border: OutlineInputBorder(),
-                //   ),
-                // ),
                 const SizedBox(height: 16.0),
                 // City text field
                 TextFormField(

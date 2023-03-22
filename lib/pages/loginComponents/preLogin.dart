@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:liquid_swipe/liquid_swipe.dart';
-import 'package:wed_guru/pages/login.dart';
+import 'package:wed_guru/pages/loginComponents/login.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
 
 

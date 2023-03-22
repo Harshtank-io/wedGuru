@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:wed_guru/pages/addPage.dart';
+import 'package:wed_guru/pages/API/addPage.dart';
 import 'package:wed_guru/services/services.dart';
 import 'package:wed_guru/widget/snackbar.dart';
 import 'package:wed_guru/widget/todocard.dart';

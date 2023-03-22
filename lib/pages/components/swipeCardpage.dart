@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:swipeable_card_stack/swipe_controller.dart';
 import 'package:swipeable_card_stack/swipeable_card_stack.dart';
-//import 'package:wed_guru/pages/likes.dart';
+
 import 'package:wed_guru/util/cards.dart';
 
 class UserHome extends StatefulWidget {

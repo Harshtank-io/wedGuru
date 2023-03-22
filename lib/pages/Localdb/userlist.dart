@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:wed_guru/database/dbhelper.dart';
+import 'package:wed_guru/database/databasehelper.dart';
 import 'package:wed_guru/model/pmodel.dart';
-import 'package:wed_guru/pages/detail.dart';
-import 'package:wed_guru/pages/edit.dart';
-import 'package:wed_guru/pages/home.dart';
-import 'package:wed_guru/pages/view.dart';
+import 'package:wed_guru/pages/Localdb/showdetail.dart';
+import 'package:wed_guru/pages/Localdb/edit.dart';
+import 'package:wed_guru/pages/components/homeNavigation.dart';
+import 'package:wed_guru/pages/Localdb/addUser.dart';
 
 class UserList extends StatefulWidget {
   const UserList({Key? key}) : super(key: key);

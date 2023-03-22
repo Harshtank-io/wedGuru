@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:wed_guru/pages/newuser.dart';
+import 'package:wed_guru/pages/loginComponents/newuser.dart';
 
 class FirstTime extends StatefulWidget {
   const FirstTime({Key? key}) : super(key: key);

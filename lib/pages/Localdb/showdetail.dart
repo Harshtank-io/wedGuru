@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:wed_guru/database/dbhelper.dart';
+import 'package:wed_guru/database/databasehelper.dart';
 import 'package:wed_guru/model/pmodel.dart';
 
 class Details extends StatelessWidget {
@@ -18,10 +18,12 @@ class Details extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text('Name: ${user.name}'),
-            Text('Gender: ${user.gender}'),
-            Text('City: ${user.city}'),
-            Text('Description: ${user.description}'),
+            Container(
+                child: Text('Name: ${user.name}' ,),
+            ),
+            Container(child: Text('Gender: ${user.gender}')),
+            Container(child: Text('City: ${user.city}')),
+            Container(child: Text('Description: ${user.description}')),
           ],
         ),
       ),
