@@ -24,36 +24,39 @@ class CardView extends StatelessWidget {
           SizedBox.expand(
             child: Container(
               decoration: const BoxDecoration(
-                  // gradient: LinearGradient(
-                  //     colors: [Colors.transparent, Colors.pink],
-                  //     begin: Alignment.center,
-                  //     end: Alignment.bottomCenter),
-                image: DecorationImage(image: AssetImage("lib/img/p1.jpg"))
+                image: DecorationImage(
+                  image: AssetImage("lib/img/p1.jpg"),
+                ),
                  ),
             ),
           ),
           Align(
             alignment: Alignment.bottomLeft,
-            child: Container(
-                padding: EdgeInsets.symmetric(vertical: 16.0, horizontal: 20.0),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: <Widget>[
-                    Text(text,
-                        style: GoogleFonts.dancingScript(
-                            color: Colors.white,
-                            fontSize: 40.0,
-                            fontWeight: FontWeight.w500)),
-                    Padding(padding: EdgeInsets.only(bottom: 8.0)),
-                    Text("$text Biography",
-                        textAlign: TextAlign.start,
-                        style: GoogleFonts.poppins(
-                          color: Colors.white,
-
-                        )),
-                  ],
-                )),
+            child: Row(
+              children: [
+                Container(
+                    padding: EdgeInsets.symmetric(vertical: 16.0, horizontal: 20.0),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: <Widget>[
+                        Text(text,
+                            style: GoogleFonts.poppins(
+                                color: Colors.white,
+                                fontSize: 40.0,
+                                fontWeight: FontWeight.w500)),
+                        Padding(padding: EdgeInsets.only(bottom: 8.0)),
+                        Text("$text Biography",
+                            textAlign: TextAlign.start,
+                            style: GoogleFonts.poppins(
+                              color: Colors.white,
+                            ),
+                        ),
+                      ],
+                    ),
+                ),
+              ],
+            ),
           )
         ],
       ),

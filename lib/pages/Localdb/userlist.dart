@@ -28,38 +28,86 @@ class _UserListState extends State<UserList> {
 
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('User List Page'),
-        leading: IconButton(
-          icon: Icon(Icons.navigate_before),
-               onPressed: (){ Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) =>HomePage()));},
+      appBar: PreferredSize(
+        preferredSize: Size.fromHeight(80),
+        child: AppBar(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.vertical(
+              bottom: Radius.circular(25)
+            ),
+          ),
+          centerTitle: true,
+          backgroundColor: Colors.pinkAccent,
+          title: const Text(
+            'List',
+            style: TextStyle(
+            fontWeight: FontWeight.w700,
+            fontSize: 30
+          ),
+          ),
+          leading: IconButton(
+            icon: Icon(Icons.navigate_before),
+            onPressed: () {
+              Navigator.pushReplacement(
+                  context, MaterialPageRoute(builder: (context) => HomePage()));
+            },
+          ),
         ),
       ),
       body: ListView.builder(
         itemCount: userList.length,
         itemBuilder: (BuildContext context, int index) {
           final user = userList[index];
-          return ListTile(
-            title: Text(user.name),
-            subtitle: Text(user.city),
-            leading: IconButton(
-              icon: Icon(Icons.edit),
-              onPressed: (){ Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) =>EditUser(user: user,)));},
+          return Container(
+            width: 70,
+            padding: EdgeInsets.only(top: 18,bottom: 18 ),
+            margin: EdgeInsets.only(top: 10 ,left: 10 ,right: 10),
+            decoration: BoxDecoration(
+              color: Colors.pink,
+              borderRadius: BorderRadius.circular(30),
             ),
-            trailing:
-                IconButton(
-                  icon: Icon(Icons.delete),
-                  onPressed: () {
-                    _deleteUser(user.id!);
-                    Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => UserList()));
-                    ScaffoldMessenger.of(context).showSnackBar(
-                      const SnackBar(
-                        content: Text('User Deleted Successfully!!'),
-                      ),
-                    );
-                  },
-                ),
-            onTap: () {Navigator.push(context, MaterialPageRoute(builder: (context) => Details(user: user,)));},
+            child: ListTile(
+              title: Padding(
+                padding: const EdgeInsets.only(bottom: 8.0),
+                child: cardText(user: user),
+              ),
+              subtitle: Text(user.city,
+                style: const TextStyle(
+                  color: Colors.black,
+                  fontSize: 17
+                ) ,
+              ),
+              leading: IconButton(
+                icon: Icon(Icons.edit),
+                onPressed: () {
+                  Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => EditUser(user: user,)));
+                },
+              ),
+              trailing: IconButton(
+                icon: Icon(Icons.delete),
+                onPressed: () {
+                  _deleteUser(user.id!);
+                  Navigator.pushReplacement(context,
+                      MaterialPageRoute(builder: (context) => UserList()));
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    const SnackBar(
+                      content: Text('User Deleted Successfully!!'),
+                    ),
+                  );
+                },
+              ),
+              onTap: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => Details(
+                              user: user,
+                            )));
+              },
+            ),
           );
         },
       ),
@@ -90,5 +138,25 @@ class _UserListState extends State<UserList> {
     if (count > 0) {
       _deleteUser(id);
     }
+  }
+}
+
+class cardText extends StatelessWidget {
+  const cardText({
+    super.key,
+    required this.user,
+  });
+
+  final User user;
+
+  @override
+  Widget build(BuildContext context) {
+    return Text(user.name,
+      style: const TextStyle(
+        fontSize: 22,
+        fontWeight: FontWeight.w700,
+        color: Colors.white
+    ),
+    );
   }
 }

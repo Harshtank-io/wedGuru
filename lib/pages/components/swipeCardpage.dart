@@ -26,14 +26,14 @@ class _UserHomeState extends State<UserHome> {
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(70),
         child: AppBar(
-          backgroundColor:  Colors.blue,
+          backgroundColor:  Colors.pinkAccent,
           elevation: 0,
           title: Text("Wed Guru"),
           centerTitle: true,
 
-          titleTextStyle: GoogleFonts.dancingScript(
-            fontSize: 30,
-            fontWeight: FontWeight.w800,
+          titleTextStyle: GoogleFonts.poppins(
+            fontSize: 25,
+            fontWeight: FontWeight.w500,
           ),
           leading: IconButton(onPressed: (){}, icon: Icon(Icons.settings),),
           shape: const RoundedRectangleBorder(
@@ -74,8 +74,8 @@ class _UserHomeState extends State<UserHome> {
                   print('onDown ${(widget as CardView).text} $index');
                 }
               },
-              enableSwipeUp: true,
-              enableSwipeDown: true,
+              enableSwipeUp: false,
+              enableSwipeDown: false,
             ),
             SizedBox(height: 30),
             Text(
@@ -87,23 +87,18 @@ class _UserHomeState extends State<UserHome> {
               ) ,
             ),
             Container(
-              margin: EdgeInsets.symmetric(vertical: 20.0),
+              margin: EdgeInsets.symmetric(vertical:15.0),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   FloatingActionButton(
-                    backgroundColor: Colors.blue,
-                    child: Icon(Icons.chevron_left),
+                    backgroundColor: Colors.pinkAccent,
+                    child: Icon(Icons.close),
                     onPressed: () => _cardController.triggerSwipeLeft(),
                   ),
                   FloatingActionButton(
-                    backgroundColor: Colors.blue,
-                    child: Icon(Icons.favorite_border),
-                    onPressed: () {},
-                  ),
-                  FloatingActionButton(
-                    backgroundColor: Colors.blue,
-                    child: Icon(Icons.chevron_right),
+                    backgroundColor: Colors.pink,
+                    child: Icon(Icons.favorite),
                     onPressed: () => _cardController.triggerSwipeRight(),
                   ),
                   // FloatingActionButton(

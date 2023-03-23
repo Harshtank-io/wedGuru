@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import 'package:wed_guru/pages/loginComponents/preLogin.dart';
 
 void main() => runApp(const MyApp());

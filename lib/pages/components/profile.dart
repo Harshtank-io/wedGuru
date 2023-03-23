@@ -11,7 +11,7 @@ class UserProfile extends StatelessWidget {
       fit: StackFit.expand,
       children: [
         Container(
-         color: Colors.blue,
+         color: Colors.white10,
         ),
         Scaffold(
           backgroundColor: Colors.transparent,
@@ -54,7 +54,7 @@ class UserProfile extends StatelessWidget {
                                 width: innerWidth,
                                 decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(30),
-                                  color: Colors.white,
+                                  color: Colors.pink[400],
                                 ),
                                 child: Column(
                                   children: [
@@ -64,7 +64,7 @@ class UserProfile extends StatelessWidget {
                                     Text(
                                       'Ramesh',
                                       style: GoogleFonts.poppins(
-                                        color: Colors.black,
+                                        color: Colors.white,
                                         fontSize: 37,
                                         fontWeight: FontWeight.w500,
                                       ),
@@ -81,14 +81,14 @@ class UserProfile extends StatelessWidget {
                                             Text(
                                               'Likes',
                                               style: GoogleFonts.poppins(
-                                                color: Colors.grey[700],
+                                                color: Colors.white,
                                                 fontSize: 25,
                                               ),
                                             ),
                                             Text(
                                               '1000',
                                               style: GoogleFonts.poppins(
-                                                color: Colors.black,
+                                                color: Colors.white,
                                                 fontSize: 25,
                                               ),
                                             ),
@@ -114,14 +114,14 @@ class UserProfile extends StatelessWidget {
                                             Text(
                                               'Profile visit',
                                               style: GoogleFonts.poppins(
-                                                color: Colors.grey[700],
+                                                color: Colors.white,
                                                 fontSize: 25,
                                               ),
                                             ),
                                             Text(
-                                              '100',
+                                              '1000',
                                               style: GoogleFonts.poppins(
-                                                color: Colors.black,
+                                                color: Colors.white,
                                                 fontSize: 25,
                                               ),
                                             ),
@@ -171,7 +171,7 @@ class UserProfile extends StatelessWidget {
                             style: GoogleFonts.poppins(
                               color: Colors.black,
                               fontSize: 27,
-                              fontWeight: FontWeight.w400,
+                              fontWeight: FontWeight.w600,
                             ),
                           ),
                           Divider(
@@ -184,7 +184,7 @@ class UserProfile extends StatelessWidget {
                             height: height * 0.15,
                             width:  400,
                             decoration: BoxDecoration(
-                              color: Colors.grey[300],
+                              color: Colors.pink[400],
                               borderRadius: BorderRadius.circular(30),
                             ),
                             padding: EdgeInsets.all(20),
@@ -192,6 +192,7 @@ class UserProfile extends StatelessWidget {
                                 'This is Ramesh, '
                                     'Music Lover Looking to Write the Next Verse.',
                               style: GoogleFonts.poppins(
+                                color: Colors.white,
                                 fontWeight: FontWeight.w400,
                                 fontSize: 20,
                                 fontStyle: FontStyle.italic,
@@ -205,13 +206,14 @@ class UserProfile extends StatelessWidget {
                           Container(
                             height: height * 0.15,
                             decoration: BoxDecoration(
-                              color: Colors.grey.shade300,
+                              color: Colors.pink.shade400,
                               borderRadius: BorderRadius.circular(30),
                             ),
                             padding: EdgeInsets.all(20),
                             child: Text(
     'Life is Great, But Maybe It Can Be Better With You?',
                               style: GoogleFonts.poppins(
+                                color: Colors.white,
                                 fontWeight: FontWeight.w400,
                                 fontSize: 20,
                                 fontStyle: FontStyle.italic,
