@@ -32,8 +32,20 @@ class _AddUserState extends State<AddUser> {
     var _formKey = GlobalKey<FormState>();
     return Scaffold(
       // resizeToAvoidBottomInset: false,
-      appBar: AppBar(
-        title: Text('Add User'),
+      appBar: PreferredSize(
+        preferredSize: Size.fromHeight(70),
+        child: AppBar(
+          backgroundColor: Colors.pinkAccent,
+          centerTitle: true,
+          title: Text("Add"),
+          leading: Icon(Icons.chevron_left),
+          shape: const RoundedRectangleBorder(
+              borderRadius: BorderRadius.vertical(
+                  bottom: Radius.circular(25)
+              )
+          ),
+        ),
+
       ),
       body: SingleChildScrollView(
         child: Padding(
@@ -106,9 +118,9 @@ class _AddUserState extends State<AddUser> {
                         // Navigator.pop(context);
                       }
                     },
-                    backgroundColor: Colors.green,
+                    backgroundColor: Colors.pink,
                     icon: const Icon(Icons.add),
-                    label: const Text('Add User'),
+                    label: const Text('Add'),
                   ),
                 ),
                 const SizedBox(height: 16),
@@ -123,9 +135,9 @@ class _AddUserState extends State<AddUser> {
                         ),
                       );
                     },
-                    backgroundColor: Colors.green,
+                    backgroundColor: Colors.pink,
                     icon: const Icon(Icons.add),
-                    label: const Text('Display Users'),
+                    label: const Text('User'),
                   ),
                 ),
               ],

@@ -30,7 +30,6 @@ class _UserHomeState extends State<UserHome> {
           elevation: 0,
           title: Text("Wed Guru"),
           centerTitle: true,
-
           titleTextStyle: GoogleFonts.poppins(
             fontSize: 25,
             fontWeight: FontWeight.w500,
