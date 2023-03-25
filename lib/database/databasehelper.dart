@@ -28,9 +28,10 @@ class DatabaseProvider {
             "name TEXT,"
             "gender TEXT,"
             "city TEXT,"
-            "description TEXT"
+            "description TEXT,"
+            "isLiked INTEGER"
             ")");
-
+/*
         await db.execute(
           "INSERT INTO USER ('id', 'name', 'gender', 'city', 'description') values (?,?,?,?,?)",
           [1, 'Ramesh', 'Male', 'Rajkot', 'Nothing'],
@@ -49,7 +50,7 @@ class DatabaseProvider {
         await db.execute(
           "INSERT INTO USER ('id', 'name', 'gender', 'city', 'description') values (?,?,?,?,?)",
           [4, 'Priya', 'Female', 'Jamnagar', 'Human'],
-        );
+        );*/
       },
     );
   }
@@ -60,10 +61,12 @@ class DatabaseProvider {
     List<Map> results =
     await db.query("User", columns: User.columns, orderBy: "id ASC");
     List<User> users = [];
+      print("${results.length} sdfsssd");
     for (var result in results) {
       User user = User.fromMap(result as Map<String, dynamic>);
       users.add(user);
     }
+    print("${users.length} sdfsd");
     return users;
   }
 
@@ -81,9 +84,10 @@ class DatabaseProvider {
     await db.rawQuery("SELECT MAX(id+1) as last_inserted_id FROM User");
     var id = maxIdResult.first["last_inserted_id"];
     var result = await db.rawInsert(
-      "INSERT into User (id, name, gender, city, description) VALUES (?,?,?,?,?)",
-      [id, user.name, user.gender, user.city, user.description],
+      "INSERT into User (id, name, gender, city, description,isLiked) VALUES (?,?,?,?,?,?)",
+      [id, user.name, user.gender, user.city, user.description ,user.isliked ? 1:0],
     );
+    print(result);
     return result;
   }
 
@@ -94,6 +98,11 @@ class DatabaseProvider {
         .update("User", user.toMap(), where: "id = ?", whereArgs: [user.id]);
     return result;
   }
+Future<void> likedUpdate(User user )async{
+    final db = await database;
+    var result = await db
+        .update("User", user.toMap(), where: "id = ?", whereArgs: [user.id]);
+}
 
   //delete user
   delete(int id) async {

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:wed_guru/database/databasehelper.dart';
 import 'package:wed_guru/model/pmodel.dart';
+import 'package:wed_guru/pages/Localdb/likedUsers.dart';
 import 'package:wed_guru/pages/Localdb/showdetail.dart';
 import 'package:wed_guru/pages/Localdb/edit.dart';
 import 'package:wed_guru/pages/components/homeNavigation.dart';
@@ -50,7 +51,7 @@ class _UserListState extends State<UserList> {
             icon: Icon(Icons.navigate_before),
             onPressed: () {
               Navigator.pushReplacement(
-                  context, MaterialPageRoute(builder: (context) => HomePage()));
+                  context, MaterialPageRoute(builder: (context) => LikedUsers(userList: userList)));
             },
           ),
         ),
@@ -111,6 +112,13 @@ class _UserListState extends State<UserList> {
                     trailing: Wrap(
                       children: [
                         IconButton(
+                            onPressed: (){
+                              setState(() {
+                              user.isliked = !user.isliked;
+                              dbHelper.likedUpdate(user);
+                            });},
+                            icon: Icon(user.isliked ? Icons.favorite : Icons.favorite_border),),
+                        IconButton(
                           icon: Icon(Icons.delete),
                           onPressed: () {
                             _deleteUser(user.id!);
@@ -160,7 +168,8 @@ class _UserListState extends State<UserList> {
   Future<void> _getUsers() async {
     final list = await dbHelper.getAllUsers();
     setState(() {
-      userList = list;
+      userList.clear();
+      userList.addAll(list);
     });
   }
 

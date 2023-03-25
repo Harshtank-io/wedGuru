@@ -4,7 +4,9 @@ class User {
   final String gender;
   final String city;
   final String description;
-  static final columns = ["id", "name", "gender", "city", "description"];
+  static final columns = ["id", "name", "gender", "city", "description" , "isLiked"];
+   bool isliked;
+
 
   User({
     this.id,
@@ -12,9 +14,10 @@ class User {
     required this.gender,
     required this.city,
     required this.description,
+    this.isliked = false,
   });
 
-  User copyWith({int? id, String? name, String? city, String? gender , String? description}) {
+  User copyWith({int? id, String? name, String? city, String? gender , String? description ,}) {
     return User(
       id: id ?? this.id,
       name: name ?? this.name,
@@ -32,6 +35,7 @@ class User {
       'gender': gender,
       'city': city,
       'description': description,
+      'isLiked' : isliked ? 1 : 0,
     };
   }
 
@@ -43,6 +47,7 @@ class User {
       gender: data['gender'],
       city: data['city'],
       description: data['description'],
+        isliked :data['isLiked'].toString()=="0"?false:true,
     );
   }
 }

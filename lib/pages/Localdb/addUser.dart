@@ -13,10 +13,10 @@ class AddUser extends StatefulWidget {
 
 class _AddUserState extends State<AddUser> {
   final TextEditingController _nameController = TextEditingController();
-
 //  final TextEditingController _genderController = TextEditingController();
 //  final TextEditingController _cityController = TextEditingController();
   final TextEditingController _descriptionController = TextEditingController();
+
 
   String _genderValue = '';
 
@@ -25,7 +25,7 @@ class _AddUserState extends State<AddUser> {
     'Jamnagar',
     'Rajkot',
     'Vadodara',
-    'Ahemdabada'
+    'Ahmedabad'
   ];
 
   final dbHelper = DatabaseProvider.db;
@@ -188,8 +188,7 @@ class _AddUserState extends State<AddUser> {
                         final user = User(
                           name: _nameController.text,
                           gender: _genderValue,
-                          //city: _cityController.text,
-                          city: 'Jamnagar',
+                          city: cityDropDownValue!,
                           description: _descriptionController.text,
                         );
                         await dbHelper.insert(user);
@@ -212,7 +211,7 @@ class _AddUserState extends State<AddUser> {
                 Center(
                   child: FloatingActionButton.extended(
                     onPressed: () {
-                      Navigator.pop(
+                      Navigator.pushReplacement(
                         context,
                         MaterialPageRoute(
                           builder: (context) => const UserList(),
