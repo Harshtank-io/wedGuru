@@ -20,7 +20,7 @@ class _ButtonLoginState extends State<ButtonLogin> {
         width: MediaQuery.of(context).size.width,
         child:
         OutlinedButton(
-          onPressed: (){ Navigator.push(context, MaterialPageRoute(builder: (context) => const HomePage()));},
+          onPressed: (){ Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const HomePage()));},
           style: ElevatedButton.styleFrom(
             side: const BorderSide(color: Colors.black),
             shape: const CircleBorder(),

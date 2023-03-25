@@ -27,7 +27,6 @@ class _TextLoginState extends State<TextLogin> {
                   fontSize: 33,
                   color: Colors.black,
                   fontWeight: FontWeight.w500,
-                  fontStyle: FontStyle.italic,
                 ),
               ),
             ),

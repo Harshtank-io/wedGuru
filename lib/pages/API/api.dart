@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:wed_guru/pages/API/addPage.dart';
+import 'package:wed_guru/pages/Localdb/userlist.dart';
 import 'package:wed_guru/services/services.dart';
 import 'package:wed_guru/widget/snackbar.dart';
 import 'package:wed_guru/widget/todocard.dart';
@@ -24,8 +25,31 @@ class _TodoListPageState extends State<TodoListPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Center(child: Text("API CURD")),
+      appBar: PreferredSize(
+        preferredSize: Size.fromHeight(80),
+        child: AppBar(
+          shape: const RoundedRectangleBorder(
+            borderRadius: BorderRadius.vertical(
+                bottom: Radius.circular(25)
+            ),
+          ),
+          centerTitle: true,
+          backgroundColor: Colors.pinkAccent,
+          title: const Text(
+            'Add',
+            style: TextStyle(
+                fontWeight: FontWeight.w700,
+                fontSize: 30
+            ),
+          ),
+          leading: IconButton(
+            icon: Icon(Icons.navigate_before),
+            onPressed: () {
+              Navigator.pop(
+                  context, MaterialPageRoute(builder: (context) => UserList()));
+            },
+          ),
+        ),
       ),
       body: Visibility(
         visible: isLoading,
@@ -59,6 +83,7 @@ class _TodoListPageState extends State<TodoListPage> {
         ),
       ),
       floatingActionButton: FloatingActionButton.extended(
+        backgroundColor: Colors.pinkAccent,
           onPressed: navigateToAddPage, label: const Text("ADD API")),
     );
   }

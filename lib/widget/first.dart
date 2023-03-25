@@ -29,7 +29,7 @@ class _FirstTimeState extends State<FirstTime> {
             SizedBox(width: 10),
             ElevatedButton(
               style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.pink,
+                  backgroundColor: Colors.black,
                   shape: StadiumBorder()),
               onPressed: () {
                 Navigator.push(context, MaterialPageRoute(builder: (context) => const NewUser()));

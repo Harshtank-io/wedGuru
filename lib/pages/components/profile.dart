@@ -211,7 +211,7 @@ class UserProfile extends StatelessWidget {
                             ),
                             padding: EdgeInsets.all(20),
                             child: Text(
-    'Life is Great, But Maybe It Can Be Better With You?',
+                               'Life is Great, But Maybe It Can Be Better With You.',
                               style: GoogleFonts.poppins(
                                 color: Colors.white,
                                 fontWeight: FontWeight.w400,

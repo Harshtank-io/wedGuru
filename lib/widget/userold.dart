@@ -25,7 +25,7 @@ class UserOld extends StatelessWidget {
                   backgroundColor: Colors.black,
                   shape: StadiumBorder()),
               onPressed: (){
-              Navigator.push(context, MaterialPageRoute(builder: (context) => LoginPage()));
+              Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => LoginPage()));
             }, child:  Text(
               'sign in',
               style: GoogleFonts.poppins(

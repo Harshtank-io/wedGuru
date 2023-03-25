@@ -17,7 +17,7 @@ class _VerticalTextState extends State<VerticalText> {
     child: Text(
       'Sign in',
       style: GoogleFonts.poppins(
-        color: Colors.pink,
+        color: Colors.white,
         fontSize: 38,
         fontWeight: FontWeight.w500,
       ),

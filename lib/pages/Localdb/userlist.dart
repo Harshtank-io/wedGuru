@@ -108,18 +108,22 @@ class _UserListState extends State<UserList> {
                                 builder: (context) => EditUser(user: user,)));
                       },
                     ),
-                    trailing: IconButton(
-                      icon: Icon(Icons.delete),
-                      onPressed: () {
-                        _deleteUser(user.id!);
-                        Navigator.pushReplacement(context,
-                            MaterialPageRoute(builder: (context) => UserList()));
-                        ScaffoldMessenger.of(context).showSnackBar(
-                          const SnackBar(
-                            content: Text('User Deleted Successfully!!'),
-                          ),
-                        );
-                      },
+                    trailing: Wrap(
+                      children: [
+                        IconButton(
+                          icon: Icon(Icons.delete),
+                          onPressed: () {
+                            _deleteUser(user.id!);
+                            Navigator.pushReplacement(context,
+                                MaterialPageRoute(builder: (context) => UserList()));
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              const SnackBar(
+                                content: Text('User Deleted Successfully!!'),
+                              ),
+                            );
+                          },
+                        ),
+                      ],
                     ),
                     onTap: () {
                       Navigator.push(

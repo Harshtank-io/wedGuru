@@ -29,7 +29,7 @@ class _LoginPageState extends State<LoginPage> {
           // gradient: LinearGradient(
           //     begin: Alignment.topRight,
           //     end: Alignment.bottomLeft,
-              color: Colors.blue,
+              color: Colors.pink,
         ),
         child: ListView(
           children: <Widget>[

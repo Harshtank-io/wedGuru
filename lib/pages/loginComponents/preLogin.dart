@@ -68,7 +68,7 @@ class _PreLoginState extends State<PreLogin> {
               ),
             ),
             Container(
-              color: Colors.blue,
+              color: Colors.white,
               padding: const EdgeInsets.all(30),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,

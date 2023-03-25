@@ -13,9 +13,20 @@ class AddUser extends StatefulWidget {
 
 class _AddUserState extends State<AddUser> {
   final TextEditingController _nameController = TextEditingController();
-  final TextEditingController _genderController = TextEditingController();
-  final TextEditingController _cityController = TextEditingController();
+
+//  final TextEditingController _genderController = TextEditingController();
+//  final TextEditingController _cityController = TextEditingController();
   final TextEditingController _descriptionController = TextEditingController();
+
+  String _genderValue = '';
+
+  String? cityDropDownValue;
+  final List<String> cityOption = <String>[
+    'Jamnagar',
+    'Rajkot',
+    'Vadodara',
+    'Ahemdabada'
+  ];
 
   final dbHelper = DatabaseProvider.db;
 
@@ -33,19 +44,30 @@ class _AddUserState extends State<AddUser> {
     return Scaffold(
       // resizeToAvoidBottomInset: false,
       appBar: PreferredSize(
-        preferredSize: Size.fromHeight(70),
+        preferredSize: Size.fromHeight(80),
         child: AppBar(
-          backgroundColor: Colors.pinkAccent,
-          centerTitle: true,
-          title: Text("Add"),
-          leading: Icon(Icons.chevron_left),
           shape: const RoundedRectangleBorder(
-              borderRadius: BorderRadius.vertical(
-                  bottom: Radius.circular(25)
-              )
+            borderRadius: BorderRadius.vertical(
+                bottom: Radius.circular(25)
+            ),
+          ),
+          centerTitle: true,
+          backgroundColor: Colors.pinkAccent,
+          title: const Text(
+            'Add',
+            style: TextStyle(
+                fontWeight: FontWeight.w700,
+                fontSize: 30
+            ),
+          ),
+          leading: IconButton(
+            icon: Icon(Icons.navigate_before),
+            onPressed: () {
+              Navigator.pop(
+                  context, MaterialPageRoute(builder: (context) => UserList()));
+            },
           ),
         ),
-
       ),
       body: SingleChildScrollView(
         child: Padding(
@@ -71,22 +93,83 @@ class _AddUserState extends State<AddUser> {
                 ),
                 const SizedBox(height: 16.0),
                 // Gender text field
-                TextFormField(
-                  controller: _genderController,
-                  decoration: const InputDecoration(
-                    labelText: 'Gender',
-                    border: OutlineInputBorder(),
+                // TextFormField(
+                //   controller: _genderController,
+                //   decoration: const InputDecoration(
+                //     labelText: 'Gender',
+                //     border: OutlineInputBorder(),
+                //   ),
+                // ),
+
+                // Gender Radio
+                const Text(
+                  'gender',
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 16,
                   ),
                 ),
+                Row(
+                  children: [
+                    Expanded(
+                      child: RadioListTile<String>(
+                        title: Text('Male'),
+                        value: 'Male',
+                        groupValue: _genderValue,
+                        onChanged: (value) {
+                          setState(() {
+                            _genderValue = value!;
+                          });
+                        },
+                      ),
+                    ),
+                    Expanded(
+                      child: RadioListTile<String>(
+                        title: Text('Female'),
+                        value: 'Female',
+                        groupValue: _genderValue,
+                        onChanged: (value) {
+                          setState(() {
+                            _genderValue = value!;
+                          });
+                        },
+                      ),
+                    ),
+                  ],
+                ),
                 const SizedBox(height: 16.0),
-                // City text field
-                TextFormField(
-                  controller: _cityController,
+                DropdownButtonFormField<String>(
+                  value: cityDropDownValue,
                   decoration: const InputDecoration(
                     labelText: 'City',
                     border: OutlineInputBorder(),
                   ),
+                  items: cityOption.map((String value) {
+                    return DropdownMenuItem<String>(
+                        value: value,
+                        child: Text(value));
+                  }).toList(),
+                  onChanged: (String? newvalue) {
+                    setState(() {
+                      cityDropDownValue = newvalue;
+                    });
+                  },
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'please selected a city';
+                    }
+                    return null;
+                  },
                 ),
+
+                // // City text field
+                // TextFormField(
+                //   controller: _cityController,
+                //   decoration: const InputDecoration(
+                //     labelText: 'City',
+                //     border: OutlineInputBorder(),
+                //   ),
+                // ),
                 const SizedBox(height: 16.0),
                 // Description text field
                 TextFormField(
@@ -104,15 +187,16 @@ class _AddUserState extends State<AddUser> {
                       if (_formKey.currentState!.validate()) {
                         final user = User(
                           name: _nameController.text,
-                          gender: _genderController.text,
-                          city: _cityController.text,
+                          gender: _genderValue,
+                          //city: _cityController.text,
+                          city: 'Jamnagar',
                           description: _descriptionController.text,
                         );
                         await dbHelper.insert(user);
                         ScaffoldMessenger.of(context).showSnackBar(
                           const SnackBar(
                             content: Text('User Added Successfully!!'),
-                            duration: Duration(seconds: 2),
+                            duration: Duration(seconds: 1),
                           ),
                         );
                         // Navigator.pop(context);
@@ -128,7 +212,7 @@ class _AddUserState extends State<AddUser> {
                 Center(
                   child: FloatingActionButton.extended(
                     onPressed: () {
-                      Navigator.push(
+                      Navigator.pop(
                         context,
                         MaterialPageRoute(
                           builder: (context) => const UserList(),
@@ -147,31 +231,4 @@ class _AddUserState extends State<AddUser> {
       ),
     );
   }
-
-  Future<void> _getUsers() async {}
 }
-
-//fields for user add
-/*
-name,gender,dob,religion,caste,location/address,about me,hobbies,photo,height,
-marital status.
-db table :-
-CREATE TABLE users (
-    id INT PRIMARY KEY AUTO_INCREMENT,
-    gender VARCHAR(10),
-    name VARCHAR(255),
-    date_of_birth DATE,
-    marital_status VARCHAR(20),
-    religion VARCHAR(50),
-    caste VARCHAR(50),
-    education_level VARCHAR(50),
-    occupation VARCHAR(50),
-    annual_income INT,
-    height INT,
-    weight INT,
-    location_address VARCHAR(255),
-    about_me TEXT,
-    hobbies_interests TEXT,
-    photos TEXT,
-);
-*/

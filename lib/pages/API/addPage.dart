@@ -1,5 +1,6 @@
 
 import 'package:flutter/material.dart';
+import 'package:wed_guru/pages/Localdb/userlist.dart';
 import 'package:wed_guru/services/services.dart';
 import 'package:wed_guru/widget/snackbar.dart';
 
@@ -33,10 +34,26 @@ class _AddApiPageState extends State<AddApiPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        // title: isEdit ? Text("Edit API") : Text("ADD API"),
-        title: Text(
-          isEdit ? 'Edit API' : 'Add API',
+      appBar:PreferredSize(
+        preferredSize: Size.fromHeight(80),
+        child: AppBar(
+          shape: const RoundedRectangleBorder(
+            borderRadius: BorderRadius.vertical(
+                bottom: Radius.circular(25)
+            ),
+          ),
+          centerTitle: true,
+          backgroundColor: Colors.pinkAccent,
+          title: Text(
+            isEdit ? 'Edit API' : 'Add API',
+          ),
+          leading: IconButton(
+            icon: Icon(Icons.navigate_before),
+            onPressed: () {
+              Navigator.pop(
+                  context, MaterialPageRoute(builder: (context) => UserList()));
+            },
+          ),
         ),
       ),
       body: ListView(
@@ -55,6 +72,9 @@ class _AddApiPageState extends State<AddApiPage> {
           ),
           const SizedBox(height: 20),
           ElevatedButton(
+            style: ElevatedButton.styleFrom(
+              backgroundColor: Colors.pinkAccent
+            ),
             onPressed: isEdit ? updateData : submitData,
             child: Padding(
               padding: const EdgeInsets.all(16.0),
