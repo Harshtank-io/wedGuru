@@ -34,26 +34,32 @@ class _UserListState extends State<UserList> {
         preferredSize: Size.fromHeight(80),
         child: AppBar(
           shape: const RoundedRectangleBorder(
-            borderRadius: BorderRadius.vertical(
-              bottom: Radius.circular(25)
-            ),
+            borderRadius: BorderRadius.vertical(bottom: Radius.circular(25)),
           ),
           centerTitle: true,
           backgroundColor: Colors.pinkAccent,
           title: const Text(
             'List',
-            style: TextStyle(
-            fontWeight: FontWeight.w700,
-            fontSize: 30
-          ),
+            style: TextStyle(fontWeight: FontWeight.w700, fontSize: 30),
           ),
           leading: IconButton(
             icon: Icon(Icons.navigate_before),
             onPressed: () {
               Navigator.pushReplacement(
-                  context, MaterialPageRoute(builder: (context) => LikedUsers(userList: userList)));
+                  context, MaterialPageRoute(builder: (context) => HomePage()));
             },
           ),
+          actions: [
+            IconButton(
+                onPressed: () {
+                  Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) =>
+                              LikedUsers(userList: userList)));
+                },
+                icon: Icon(Icons.favorite))
+          ],
         ),
       ),
       body: Column(
@@ -61,15 +67,16 @@ class _UserListState extends State<UserList> {
           Padding(
             padding: const EdgeInsets.all(8),
             child: TextField(
-              onChanged: (val){
+              onChanged: (val) {
                 setState(() {
                   filter = val.toLowerCase();
                 });
               },
-              decoration:InputDecoration(
+              decoration: InputDecoration(
                 hintText: "search....",
                 prefixIcon: Icon(Icons.search),
-                border: OutlineInputBorder(borderRadius: BorderRadius.circular(25)),
+                border:
+                    OutlineInputBorder(borderRadius: BorderRadius.circular(25)),
               ),
             ),
           ),
@@ -78,13 +85,13 @@ class _UserListState extends State<UserList> {
               itemCount: userList.length,
               itemBuilder: (BuildContext context, int index) {
                 final user = userList[index];
-                if(!user.name.toLowerCase().contains(filter)){
+                if (!user.name.toLowerCase().contains(filter)) {
                   return Container();
                 }
                 return Container(
                   width: 70,
-                  padding: const EdgeInsets.only(top: 18,bottom: 18 ),
-                  margin: const EdgeInsets.only(top: 10 ,left: 10 ,right: 10),
+                  padding: const EdgeInsets.only(top: 18, bottom: 18),
+                  margin: const EdgeInsets.only(top: 10, left: 10, right: 10),
                   decoration: BoxDecoration(
                     color: Colors.pinkAccent,
                     borderRadius: BorderRadius.circular(30),
@@ -94,11 +101,9 @@ class _UserListState extends State<UserList> {
                       padding: const EdgeInsets.only(bottom: 8.0),
                       child: cardText(user: user),
                     ),
-                    subtitle: Text(user.city,
-                      style: const TextStyle(
-                        color: Colors.black,
-                        fontSize: 17
-                      ) ,
+                    subtitle: Text(
+                      user.city,
+                      style: const TextStyle(color: Colors.black, fontSize: 17),
                     ),
                     leading: IconButton(
                       icon: Icon(Icons.edit),
@@ -106,29 +111,59 @@ class _UserListState extends State<UserList> {
                         Navigator.pushReplacement(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => EditUser(user: user,)));
+                                builder: (context) => EditUser(
+                                      user: user,
+                                    )));
                       },
+
                     ),
                     trailing: Wrap(
                       children: [
                         IconButton(
-                            onPressed: (){
-                              setState(() {
+                          onPressed: () {
+                            setState(() {
                               user.isliked = !user.isliked;
                               dbHelper.likedUpdate(user);
-                            });},
-                            icon: Icon(user.isliked ? Icons.favorite : Icons.favorite_border),),
+                            });
+                          },
+                          icon: Icon(user.isliked
+                              ? Icons.favorite
+                              : Icons.favorite_border),
+                        ),
                         IconButton(
                           icon: Icon(Icons.delete),
                           onPressed: () {
-                            _deleteUser(user.id!);
-                            Navigator.pushReplacement(context,
-                                MaterialPageRoute(builder: (context) => UserList()));
-                            ScaffoldMessenger.of(context).showSnackBar(
-                              const SnackBar(
-                                content: Text('User Deleted Successfully!!'),
-                              ),
-                            );
+                            showDialog(context: context, builder: (BuildContext context){
+                              return AlertDialog(
+                                title: const Text("Are you sure ?"),
+                                actions: [
+                                  Row(
+                                    children: [
+                                      FloatingActionButton.extended(
+                                          onPressed: (){Navigator.of(context).pop();},
+                                          label: Text("Cancel"),
+                                      ),
+                                      FloatingActionButton.extended(
+                                        onPressed: (){
+                                          _deleteUser(user.id!);
+                                          Navigator.pushReplacement(
+                                              context,
+                                              MaterialPageRoute(
+                                                  builder: (context) => UserList()));
+                                          ScaffoldMessenger.of(context).showSnackBar(
+                                            const SnackBar(
+                                              content: Text('User Deleted Successfully!!'),
+                                            ),
+                                          );
+                                        },
+                                          label: Text("Delete !"),
+                                      ),
+                                    ],
+                                  )
+                                ],
+                              );
+                            },);
+
                           },
                         ),
                       ],
@@ -137,7 +172,9 @@ class _UserListState extends State<UserList> {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => Details(user: user,)));
+                              builder: (context) => Details(
+                                    user: user,
+                                  )));
                     },
                   ),
                 );
@@ -149,7 +186,9 @@ class _UserListState extends State<UserList> {
       floatingActionButton: SizedBox(
         height: 100,
         child: FloatingActionButton(
-          child: Icon(Icons.add,),
+          child: Icon(
+            Icons.add,
+          ),
           backgroundColor: Colors.pinkAccent,
           onPressed: () {
             //navigate to add person page
@@ -191,12 +230,10 @@ class cardText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Text(user.name,
+    return Text(
+      user.name,
       style: const TextStyle(
-        fontSize: 22,
-        fontWeight: FontWeight.w700,
-        color: Colors.white
-    ),
+          fontSize: 22, fontWeight: FontWeight.w700, color: Colors.white),
     );
   }
 }

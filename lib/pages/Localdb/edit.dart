@@ -28,7 +28,8 @@ class _EditUserState extends State<EditUser> {
     super.initState();
     _name = widget.user.name;
     //_city = widget.user.city;
-    _gender = widget.user.gender;
+    cityDropDownValue = widget.user.city;
+    _genderValue = widget.user.gender;
     _description = widget.user.description;
 
   }
@@ -80,17 +81,6 @@ class _EditUserState extends State<EditUser> {
                 },
                 onSaved: (value) => _name = value!,
               ),
-              // TextFormField(
-              //   initialValue: _city,
-              //   decoration: InputDecoration(labelText: 'City'),
-              //   validator: (value) {
-              //     if (value == null || value.isEmpty) {
-              //       return 'Please enter city';
-              //     }
-              //     return null;
-              //   },
-              //   onSaved: (value) => _city = value!,
-              // ),
               DropdownButtonFormField<String>(
                 value: cityDropDownValue,
                 decoration: const InputDecoration(
@@ -102,6 +92,7 @@ class _EditUserState extends State<EditUser> {
                       value: value,
                       child: Text(value));
                 }).toList(),
+
                 onChanged: (String? newvalue){
                   setState(() {
                     cityDropDownValue = newvalue;
@@ -115,18 +106,6 @@ class _EditUserState extends State<EditUser> {
                 },
               ),
               SizedBox(height: 16.0),
-              // TextFormField(
-              //   initialValue: _gender,
-              //   decoration: InputDecoration(labelText: 'gender'),
-              //   validator: (value) {
-              //     if (value == null || value.isEmpty) {
-              //       return 'Please enter gender';
-              //     }
-              //     return null;
-              //   },
-              //   onSaved: (value) => _gender = value!,
-              // ),
-
               const Text(
                 'gender',
                 style: TextStyle(

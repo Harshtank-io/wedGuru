@@ -40,7 +40,6 @@ class _UserHomeState extends State<UserHome> {
               bottom: Radius.circular(25)
             )
           ),
-          actions: [IconButton(onPressed: (){}, icon: Icon(Icons.person),),],
         ),
       ),
       body: Container(

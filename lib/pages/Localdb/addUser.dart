@@ -198,6 +198,7 @@ class _AddUserState extends State<AddUser> {
                             duration: Duration(seconds: 1),
                           ),
                         );
+                        Navigator.pop(context);
                         // Navigator.pop(context);
                       }
                     },
@@ -211,12 +212,7 @@ class _AddUserState extends State<AddUser> {
                 Center(
                   child: FloatingActionButton.extended(
                     onPressed: () {
-                      Navigator.pushReplacement(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const UserList(),
-                        ),
-                      );
+                      Navigator.pop(context);
                     },
                     backgroundColor: Colors.pink,
                     icon: const Icon(Icons.add),
